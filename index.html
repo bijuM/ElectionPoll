@@ -109,11 +109,13 @@
     <script src="assets/js/jquery-1.11.1.js"></script>
     <!-- REQUIRED BOOTSTRAP SCRIPTS -->
     <script src="assets/js/bootstrap.js"></script>
-    <script type="application/javascript" src="http://www.telize.com/jsonip?callback=getip"></script>
- <script type="application/javascript">
-    function getip(json){
-      alert(json.ip); // alerts the ip address
-    }
-</script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("http://jsonip.com?callback=?", function (data) {
+                alert("Your ip: " + data.ip);
+            });
+        });
+       
+    </script>
 </body>
 </html>
