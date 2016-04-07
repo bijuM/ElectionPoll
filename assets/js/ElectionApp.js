@@ -15,7 +15,7 @@ var electionApp = angular.module('ElectionApp', ['ngRoute', 'ngStorage'])
                         .factory('QuestionerFactory', function () {
                             var questions =
                             [
-                               { "QuestionId": 1, "date": "07/04/2016", "Question": "What is the first letter in the english albhabet", "options": [{ "optionIndex": 1, "optionVal": 'A' }, { "optionIndex": 2, "optionVal": 'B' }, { "optionIndex": 3, "optionVal": 'C' }], "selectedValue": "" },
+                               { "QuestionId": 1, "date": "07/04/2016", "Question": "Will PM Modi continue to be BJP's biggest weapon in these elections too?", "options": [{ "optionIndex": 1, "optionVal": 'Yes' }, { "optionIndex": 2, "optionVal": 'No' }, { "optionIndex": 3, "optionVal": 'Cant Say' }], "selectedValue": "" },
                                { "QuestionId": 2, "date": "08/04/2016", "Question": "What is the last letter in the english albhabet", "options": [{ "optionIndex": 1, "optionVal": 'A' }, { "optionIndex": 2, "optionVal": 'B' }, { "optionIndex": 3, "optionVal": 'C' }], "selectedValue": "" },
                             ];
                             return {
@@ -23,8 +23,7 @@ var electionApp = angular.module('ElectionApp', ['ngRoute', 'ngStorage'])
                             }
 
                         })
-                        .controller('ElectionController', function ($scope, QuestionerFactory) {
-                            debugger;
+                        .controller('ElectionController', function ($scope,$location, QuestionerFactory) {
                             //$scope.test = function getD() {
                             //  return $.get('', function (r) { return "10.11.23.45" });
                             //}(function () { }());
@@ -70,7 +69,6 @@ var electionApp = angular.module('ElectionApp', ['ngRoute', 'ngStorage'])
                             $scope.optionCWidth = $scope.optionC + "%";
 
                             $scope.castVote = function (value) {
-                                debugger;
                                 var userEntry = {
                                     ip: "12.34.56.78",
                                     QuestionId: 1,
@@ -106,6 +104,8 @@ var electionApp = angular.module('ElectionApp', ['ngRoute', 'ngStorage'])
                                 $scope.optionBWidth = $scope.optionB + "%";
                                 $scope.optionC = (counts.third === 0) ? 0 : Math.round((counts.third * 100.0) / counts.totalCount);
                                 $scope.optionCWidth = $scope.optionC + "%";
+
+                                setTimeout(function () { $location.path("/Submitted"); }, 0);
                             }
 
                         });
