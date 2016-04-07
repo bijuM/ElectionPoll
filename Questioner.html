@@ -1,0 +1,48 @@
+﻿<div class="col-md-4 col-md-offset-4" ng-controller="ElectionController">
+    <div class="user-poll-section">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Question : </strong> <div ng-repeat="option in Questions">{{option.Question}}</div>
+
+            </div>
+            <div class="panel-body">
+                <div ng-repeat="option in Questions">
+                    <div class="radio" ng-repeat="opt in option.options">
+                        <label>
+                            <input type="radio" name="group-poll" ng-value="opt.optionIndex" ng-model="option.selectedValue">
+                            {{opt.optionVal}}
+                        </label>
+                    </div>
+                </div>
+
+                <hr />
+                <h5 class="text-danger">Result Of User Votes :</h5>
+                <hr />
+                Yes ({{$parent.optionA}}%) :
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{$parent.optionA}}" ng-model="optionA" aria-valuemin="0" aria-valuemax="100" ng-style="{'width': optionAWidth}">
+                        <span class="sr-only">{{$parent.optionA}}% Complete (success)</span>
+                    </div>
+                </div>
+                No ({{$parent.optionB}}%) :
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{$parent.optionB}}" ng-model="optionB" aria-valuemin="0" aria-valuemax="100" ng-style="{'width': optionBWidth}">
+                        <span class="sr-only">{{$parent.optionB}}% Complete (success)</span>
+                    </div>
+                </div>
+                MayBe ({{$parent.optionC}}%) :
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$parent.optionC}}" ng-model="optionC" aria-valuemin="0" aria-valuemax="100" ng-style="{'width': optionCWidth}">
+                        <span class="sr-only">{{$parent.optionC}}% Complete (success)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <a href="#" class="btn btn-success btn-sm" ng-click="castVote(Questions)"><span class="glyphicon glyphicon-bell"></span>Mark Your Vote</a>
+            </div>
+        </div>
+
+    </div>
+    <!-- POLL DIV END-->
+</div>
